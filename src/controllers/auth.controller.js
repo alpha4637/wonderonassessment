@@ -41,7 +41,12 @@ const loginUser = async (req, res) => {
 const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
     try {   
-        const detail = {username:username, email:email}
+        const detail = {
+            $or: [
+              { username:username },
+              { email:email}
+            ]
+          };
         let user = await userService.getUserByEmail( detail);
         if (user) {
             return res.status(400).json({ msg: 'User already exists' });
