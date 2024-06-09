@@ -1,13 +1,6 @@
 const {authService, userService} = require('../services');
 const jwt = require('jsonwebtoken');
 const config= require('../config/config');
-const createNewUserObject = newUser => ({
-  email: newUser.email,
-  firebaseUid: newUser.uid,
-  profilePic: newUser.picture,
-  isEmailVerified: newUser.isEmailVerified,
-  firebaseSignInProvider: newUser.firebase.sign_in_provider,
-});
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -47,8 +40,9 @@ const loginUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
-    try {
-        let user = await userService.getUserByEmail({ email });
+    try {   
+        const detail = {username:username, email:email}
+        let user = await userService.getUserByEmail( detail);
         if (user) {
             return res.status(400).json({ msg: 'User already exists' });
         }

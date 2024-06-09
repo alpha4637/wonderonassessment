@@ -17,8 +17,8 @@ async function getUserById(id) {
   return user;
 }
 
-async function getUserByEmail(email) {
-  const user = await User.findOne(email); //findOne is mongodb inbuilt method  
+async function getUserByEmail(detail) {
+  const user = await User.findOne(detail); //findOne is mongodb inbuilt method  
   return user;
 }
 
