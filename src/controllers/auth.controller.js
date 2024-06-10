@@ -1,6 +1,7 @@
 const {authService, userService} = require('../services');
 const jwt = require('jsonwebtoken');
 const config= require('../config/config');
+const bcrypt = require('bcryptjs');
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;

@@ -34,7 +34,8 @@
     "twilio": "^4.11.2",
     "uuid": "^9.0.0",
     "validator": "^13.9.0",
-    "winston": "^3.9.0"
+    "winston": "^3.9.0",
+    "xss-clean": "^0.1.4"
   },
   "devDependencies": {
     "prettier": "^1.19.1",
